@@ -3,6 +3,7 @@ import { NgModule } from "@angular/core";
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule } from "@angular/forms";
 import { BsDropdownModule } from "ngx-bootstrap/dropdown";
+import { TabsModule } from "ngx-bootstrap/tabs";
 import { JwtModule } from "@auth0/angular-jwt";
 
 import { AppRoutingModule } from "./app-routing.module";
@@ -16,6 +17,9 @@ import { MemberListComponent } from "../app/members/member-list/member-list.comp
 import { ListsComponent } from "./lists/lists.component";
 import { MessagesComponent } from "./messages/messages.component";
 import { MemberCardComponent } from "./members/member-card/member-card.component";
+import { MemberDetailComponent } from "./members/member-detail/member-detail.component";
+import { MemberDetailResolver } from "./_resolvers/member-detail.resolver";
+import { MemberListResolver } from "./_resolvers/member-list.resolver";
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -31,6 +35,7 @@ export function tokenGetter() {
     ListsComponent,
     MessagesComponent,
     MemberCardComponent,
+    MemberDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,6 +44,7 @@ export function tokenGetter() {
     FormsModule,
     BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
+    TabsModule.forRoot(),
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
@@ -47,7 +53,11 @@ export function tokenGetter() {
       },
     }),
   ],
-  providers: [ErrorInterceptorProvider],
+  providers: [
+    ErrorInterceptorProvider,
+    MemberDetailResolver,
+    MemberListResolver,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
