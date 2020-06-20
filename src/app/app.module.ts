@@ -9,6 +9,7 @@ import { JwtModule } from "@auth0/angular-jwt";
 import { NgxGalleryModule } from "ngx-gallery-9";
 import { FileUploadModule } from "ng2-file-upload";
 import { TimeagoModule } from "ngx-timeago";
+import { PaginationModule } from "ngx-bootstrap/pagination";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -67,6 +68,7 @@ export function tokenGetter() {
       },
     }),
     TimeagoModule.forRoot(),
+    PaginationModule.forRoot(),
   ],
   providers: [
     ErrorInterceptorProvider,
