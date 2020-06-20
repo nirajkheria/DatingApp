@@ -8,6 +8,7 @@ import { TabsModule } from "ngx-bootstrap/tabs";
 import { JwtModule } from "@auth0/angular-jwt";
 import { NgxGalleryModule } from "ngx-gallery-9";
 import { FileUploadModule } from "ng2-file-upload";
+import { TimeagoModule } from "ngx-timeago";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -65,6 +66,7 @@ export function tokenGetter() {
         blacklistedRoutes: ["localhost:5000/api/auth"],
       },
     }),
+    TimeagoModule.forRoot(),
   ],
   providers: [
     ErrorInterceptorProvider,
